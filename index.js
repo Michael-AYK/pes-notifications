@@ -44,8 +44,8 @@ expressServeur.listen(process.env.PORT || 3000, () => {
               console.log('Length sup')
               for(let i=0; i<tokens.length; i++){ 
                 console.log(i)
-                if(Expo.isExpoPushToken(tokens[i])){
-                    console.log('TOKEN VALIDE = ', tokens[i])
+                if(Expo.isExpoPushToken(tokens[i].otoken)){
+                    console.log('TOKEN VALIDE = ', tokens[i].otoken)
                     let messages = [
                         {
                             to: tokens[i],
