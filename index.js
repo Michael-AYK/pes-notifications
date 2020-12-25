@@ -20,9 +20,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         IdEtab = req.query.IdEtab;
         TitreEvenement = req.query.TitreEvenement;
         type = req.query.type
-     })
-    
-    if(destinataires !== ''){
+        
         console.log(destinataires, ' - ', IdEtab, ' - ', type)
         
         fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php',{
@@ -42,28 +40,33 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             console.log(tokens)
             
             console.log('avant de parcourir les tokens')
-          console.log('mes tokens : ', tokens)
-          for(i=0; i<tokens.length; i++){ 
+          console.log('mes tokens : ', tokens.length)
+          if(tokens.length > 0){
+              for(i=0; i<tokens.length; i++){ 
               
-            if(Expo.isExpoPushToken(tokens[i])){
-                console.log('TOKEN VALIDE = ', tokens[i])
-                let messages = [
-                    {
-                        to: tokens[i],
-                        sound: 'default',
-                        body: TitreEvenement
-                    }
-                ]
+                if(Expo.isExpoPushToken(tokens[i])){
+                    console.log('TOKEN VALIDE = ', tokens[i])
+                    let messages = [
+                        {
+                            to: tokens[i],
+                            sound: 'default',
+                            body: TitreEvenement
+                        }
+                    ]
 
-                expo.sendPushNotificationsAsync(messages).then(ticket => res.send({ticket: ticket})).catch((e) => {
-                    console.log(e)
-                    res.send({erreur: 'Erreur d envoi'})
-                })
-            }
+                    expo.sendPushNotificationsAsync(messages).then(ticket => res.send({ticket: ticket})).catch((e) => {
+                        console.log(e)
+                        res.send({erreur: 'Erreur d envoi'})
+                    })
+                }
 
           }
+          }
         })
+     })
+    
+        
 
-    }
+   
    
 })
