@@ -16,10 +16,10 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         const TitreEvenement = req.query.TitreEvenement;
         const type = req.query.type
 
-        console.log(destinataires, ' - ', IdEtab, ' - ', type)
+        console.log(req.query.destinataires, ' - ', req.query.IdEtab, ' - ', req.query.type)
         axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
             params: {
-              destinataires: destinataires, IdEtab: IdEtab, type: type
+              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
             }
           })
           .then(function (response) {
