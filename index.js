@@ -8,21 +8,25 @@ let tokens = [];
 
 const expo = new Expo()
 const expressServeur = server();
+let destinataires = '',
+    IdEtab = '',
+    TitreEvenement = '',
+    type = ''
 
 expressServeur.use(cors());
 expressServeur.listen(process.env.PORT || 3000, () => {
     expressServeur.get('/', function(req, res){
-        const destinataires = req.query.destinataires;
-        const IdEtab = req.query.IdEtab;
-        const TitreEvenement = req.query.TitreEvenement;
-        const type = req.query.type
-
-        console.log(req.query.destinataires, ' - ', req.query.IdEtab, ' - ', req.query.type)
+        destinataires = req.query.destinataires;
+        IdEtab = req.query.IdEtab;
+        TitreEvenement = req.query.TitreEvenement;
+        type = req.query.type
+     })
+        console.log(destinataires, ' - ', IdEtab, ' - ', type)
         
         fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php',{
             method: 'post',
             headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
-            body: JSON.stringify({destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type})
+            body: JSON.stringify({destinataires: destinataires, IdEtab: IdEtab, type: type})
         })
         .then(function(d){
             return d.json()
@@ -59,5 +63,5 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         })
 
           
-    })
+   
 })
