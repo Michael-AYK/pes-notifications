@@ -2,6 +2,7 @@ const axios = require('axios');
 const server = require('express');
 const Expo = require('expo-server-sdk').default;
 const cors = require('cors');
+const fetch = require("node-fetch");
 
 let tokens = [];
 
