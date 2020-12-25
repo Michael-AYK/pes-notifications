@@ -21,6 +21,8 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         TitreEvenement = req.query.TitreEvenement;
         type = req.query.type
      })
+    
+    if(destinataires !== ''){
         console.log(destinataires, ' - ', IdEtab, ' - ', type)
         
         fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php',{
@@ -62,6 +64,6 @@ expressServeur.listen(process.env.PORT || 3000, () => {
           }
         })
 
-          
+    }
    
 })
