@@ -43,7 +43,8 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             }
           })
           .then(function (response) {
-            tokens = response.data
+            //tokens = response.data
+            console.log(response.data)
           })
           .catch(function (error) {
             console.log(error);
