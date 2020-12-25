@@ -25,7 +25,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             body: JSON.stringify({destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type})
         })
         .then(function(d){
-            return d.text()
+            return d.json()
         })
         .catch(function (error) {
             console.log(error);
@@ -35,24 +35,8 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             tokens = d
             console.log(tokens)
             console.log('====')
-        })
-        
-        axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
-            params: {
-              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
-            }
-          })
-          .then(function (response) {
-            //tokens = response.data
-            console.log(response.data)
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-        
-        
-
-          console.log('avant de parcourir les tokens')
+            
+            console.log('avant de parcourir les tokens')
           console.log('mes tokens : ', tokens)
           for(i=0; i<tokens.length; i++){ 
               
@@ -72,5 +56,23 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             }
 
           }
+        })
+        
+        axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
+            params: {
+              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
+            }
+          })
+          .then(function (response) {
+            //tokens = response.data
+            //console.log(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+        
+        
+
+          
     })
 })
