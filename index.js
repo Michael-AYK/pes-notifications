@@ -57,21 +57,6 @@ expressServeur.listen(process.env.PORT || 3000, () => {
 
           }
         })
-        
-        axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
-            params: {
-              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
-            }
-          })
-          .then(function (response) {
-            //tokens = response.data
-            //console.log(response.data)
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-        
-        
 
           
     })
