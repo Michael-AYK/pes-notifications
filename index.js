@@ -44,6 +44,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         .then(function(d){
             console.log('====')
             console.log(d)
+            tokens = d
             console.log('====')
         })
 
