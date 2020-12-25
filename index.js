@@ -35,7 +35,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
             headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
             body: JSON.stringify({destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type})
         })
-        .then(d => d.json())
+        .then(d => d.text())
         .catch(function (error) {
             console.log(error);
           })
