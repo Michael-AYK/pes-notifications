@@ -18,17 +18,6 @@ expressServeur.listen(process.env.PORT || 3000, () => {
         const type = req.query.type
 
         console.log(req.query.destinataires, ' - ', req.query.IdEtab, ' - ', req.query.type)
-        axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
-            params: {
-              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
-            }
-          })
-          .then(function (response) {
-            tokens = response.data
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
         
         fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php',{
             method: 'post',
@@ -43,10 +32,24 @@ expressServeur.listen(process.env.PORT || 3000, () => {
           })
         .then(function(d){
             console.log('====')
-            console.log(d)
             tokens = d
+            console.log(tokens)
             console.log('====')
         })
+        
+        axios.get('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
+            params: {
+              destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type
+            }
+          })
+          .then(function (response) {
+            tokens = response.data
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+        
+        
 
           console.log('avant de parcourir les tokens')
           console.log('mes tokens : ', tokens)
