@@ -31,7 +31,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
 
           console.log('avant de parcourir les tokens')
           console.log('mes tokens : ', tokens)
-          for(i=0; i<tokens.length; i++){
+          for(i=0; i<tokens.length; i++){ 
               
             if(Expo.isExpoPushToken(tokens[i])){
                 let messages = [
