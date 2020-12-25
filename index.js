@@ -28,6 +28,21 @@ expressServeur.listen(process.env.PORT || 3000, () => {
           .catch(function (error) {
             console.log(error);
           })
+        
+        fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php',{
+            method: 'post',
+            headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
+            body: JSON.stringify({destinataires: req.query.destinataires, IdEtab: req.query.IdEtab, type: req.query.type})
+        })
+        .then(d => d.json())
+        .catch(function (error) {
+            console.log(error);
+          })
+        .then(function(d){
+            console.log('====')
+            console.log(d)
+            console.log('====')
+        })
 
           console.log('avant de parcourir les tokens')
           console.log('mes tokens : ', tokens)
