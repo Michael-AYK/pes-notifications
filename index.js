@@ -37,7 +37,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
               })
             })
             .then(function(d){
-              return d.text()
+              return d.json()
             })
             .catch(function (error) {
               console.log(error);
@@ -100,7 +100,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
 
         }else{ //IdEvenement est null
           let tokens = [];
-          fetch('http://192.168.0.103/m_pes/getTokens.php', {
+          fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
               method: 'post',
               headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
               body:JSON.stringify({
