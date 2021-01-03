@@ -105,11 +105,13 @@ expressServeur.listen(process.env.PORT || 3000, () => {
                 destinataires: [destinataires], IdEtab: IdEtab, type: type
               })
             })
-            .then(d => d.json())
+            .then(function(d){
+              return d.json()
+            })
             .catch(function (error) {
               console.log(error);
             })
-            .then(response => {
+            .then(function(response){
               tokens = response
 
               console.log('mes tokens : ', tokens)
