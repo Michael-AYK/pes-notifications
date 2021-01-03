@@ -36,7 +36,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
                 IdEvenement: IdEvenement, IdEtab: IdEtab, type: type
               })
             })
-            .then(d => d.json())
+            .then(d => d.text())
             .catch(function (error) {
               console.log(error);
             })
