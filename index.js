@@ -37,7 +37,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
               })
             })
             .then(function(d){
-              return d.json()
+              return d.text()
             })
             .catch(function (error) {
               console.log(error);
