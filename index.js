@@ -29,7 +29,7 @@ expressServeur.listen(process.env.PORT || 3000, () => {
           const IdEvenement = gettingIdEvent[1]
           console.log('IDEVENT ICI')
           let tokens = [];
-          fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/getTokens.php', {
+          fetch('https://www.ogseic.com/SuiviApprenants/myBackEnd_m_pes/test/getTokens.php', {
               method: 'post',
               headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
               body:JSON.stringify({
